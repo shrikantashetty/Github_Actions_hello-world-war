@@ -8,6 +8,13 @@
     <artifactId>my-helloworld</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <distributionManagement>
+    <repository>
+        <id>git-hub-actions</id>
+        <name>git-hub-actions-libs-release</name>
+        <url>http://13.235.132.212:8082/artifactory/git-hub-actions-libs-release/</url>
+    </repository>
+</distributionManagement>
 
     <dependencies>
         <!-- Servlet API Dependency -->

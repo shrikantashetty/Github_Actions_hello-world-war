@@ -113,7 +113,7 @@ jobs:
     needs: [sonar_analysis, upload_artifact]  # Waits for SonarQube and Artifactory jobs to complete
     strategy:
       matrix:
-        environment: [staging, production]  # Deploy to both staging and production environments
+        environment: [staging]  # Deploy to both staging and production environments
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

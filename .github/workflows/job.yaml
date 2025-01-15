@@ -21,7 +21,7 @@ jobs:
   build_and_test:
     # This job will run on a self-hosted runner with the "staging" label.
     # Ensure your self-hosted runner for staging has the label `staging` assigned to it.
-    runs-on: ubuntu-latest  # Self-hosted EC2 with Tomcat installed (Staging)
+    runs-on: staging  # Self-hosted EC2 with Tomcat installed (Staging)
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -125,13 +125,17 @@ jobs:
           # Deploy artifact to the appropriate Tomcat server based on the environment
           if [ "${{ matrix.environment }}" == "staging" ]; then
             # Deployment to the staging environment
-            scp -i /path/to/your/key.pem target/my-helloworld.war ec2-user@staging:/path/to/tomcat/webapps/
-            ssh -i /path/to/your/key.pem ec2-user@staging "systemctl restart tomcat"
+            echo "${{ secrets.STAGING_PRIVATE_KEY }}" > key.pem
+            chmod 600 key.pem
+            scp -i key.pem target/my-helloworld.war ubuntu@ip-172-31-37-49:/home/ubuntu/apache-tomcat-10.1.34/webapps/
+            ssh -i key.pem ubuntu@ip-172-31-37-49 "systemctl restart apache-tomcat-10.1.34"
           elif [ "${{ matrix.environment }}" == "production" ]; then
             # Deployment to the production environment (only triggered on master branch)
             if [[ $GITHUB_REF == "refs/heads/master" ]]; then
-              scp -i /path/to/your/key.pem target/my-helloworld.war ec2-user@production:/path/to/tomcat/webapps/
-              ssh -i /path/to/your/key.pem ec2-user@production "systemctl restart tomcat"
+             echo "${{ secrets.PRODUCTION_PRIVATE_KEY }}" > key.pem
+             chmod 600 key.pem
+             scp -i key.pem target/my-helloworld.war ubuntu@ip-172-31-6-80:/home/ubuntu/apache-tomcat-10.1.34/webapps/
+             ssh -i key.pem ubuntu@ip-172-31-6-80 "systemctl restart apache-tomcat-10.1.34"
             else
               echo "Skipping production deployment: Only from master branch"
             fi

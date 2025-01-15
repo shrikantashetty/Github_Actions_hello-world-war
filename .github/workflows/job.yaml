@@ -47,14 +47,28 @@ jobs:
     needs: build_and_test
     if: ${{ needs.build_and_test.result == 'success' }}  # Run only if build and test succeed
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Run SonarQube analysis
-        uses: SonarSource/sonarcloud-github-action@v1
+      # Set up Java
+      - name: Set up Java
+        uses: actions/setup-java@v3
         with:
-          sonar-token: ${{ secrets.SONAR_TOKEN }}
-          sonar-host-url: 'https://sonarcloud.io'
+          java-version: '17'
+          distribution: 'temurin'
+
+      # SonarCloud Analysis (separate job)
+      - name: SonarCloud Analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ORG: your-organization # Replace with your actual SonarCloud organization
+          SONAR_HOST_URL: https://sonarcloud.io
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.organization=${{ secrets.SONAR_ORG }} \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
   upload_artifact:
     # This job will also run on the self-hosted runner with the "staging" label.

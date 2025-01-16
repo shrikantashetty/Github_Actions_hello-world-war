@@ -6,16 +6,15 @@
 
     <groupId>com.example</groupId>
     <artifactId>my-helloworld</artifactId>
-    <version>1.0.0.${env.GITHUB_RUN_NUMBER}</version>
+    <version>1.0.0.${env.GITHUB_RUN_NUMBER}-SNAPSHOT</version>
     <packaging>war</packaging>
-    <distributionManagement>
-    <repository>
-        <id>git-hub-actions</id>
-        <name>git-hub-actions-libs-release</name>
-        <url>http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release/</url>
-    </repository>
+<distributionManagement>
+    <snapshotRepository>
+          <id>snapshots</id>
+          <name>ip-172-31-44-2-snapshots</name>
+          <url>http://35.154.195.76:8081/artifactory/git-hub-actions-libs-snapshot-local</url>
+    </snapshotRepository>
 </distributionManagement>
-
     <dependencies>
         <!-- Servlet API Dependency -->
         <dependency>

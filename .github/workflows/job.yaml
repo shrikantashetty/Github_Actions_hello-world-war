@@ -124,17 +124,19 @@ jobs:
           # Deploy artifact to the appropriate Tomcat server based on the environment
           if [ "${{ matrix.environment }}" == "staging" ]; then
             # Deployment to the staging environment          
-            cd /home/ubuntu/apache-tomcat-10.1.34/webapps
+            cd /home/ubuntu/apache-tomcat-10.1.34/webapps/
+            ls -l
             curl -L -u "${{ secrets.JFROG1_USERNAME }}:${{ secrets.JFROG1_API_KEY }}" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.46/my-helloworld-1.0.0.47.war"
-
+            ls -l
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"
           elif [ "${{ matrix.environment }}" == "production" ]; then
             # Deployment to the production environment (only triggered on master branch)
             if [[ $GITHUB_REF == "refs/heads/master" ]]; then
-            cd /home/ubuntu/apache-tomcat-10.1.34/webapps
+            cd /home/ubuntu/apache-tomcat-10.1.34/webapps/
+            ls -l
             curl -L -u "${{ secrets.JFROG1_USERNAME }}:${{ secrets.JFROG1_API_KEY }}" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.46/my-helloworld-1.0.0.47.war"
-
+            ls -l
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"
              

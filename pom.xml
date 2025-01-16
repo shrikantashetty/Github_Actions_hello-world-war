@@ -12,7 +12,7 @@
     <repository>
         <id>git-hub-actions</id>
         <name>git-hub-actions-libs-release</name>
-        <url>http://13.235.132.212:8082/artifactory/git-hub-actions-libs-release/</url>
+        <url>http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release/</url>
     </repository>
 </distributionManagement>
 

@@ -9,11 +9,11 @@
     <version>1.0.0.${env.GITHUB_RUN_NUMBER}</version>
     <packaging>war</packaging>
 <distributionManagement>
-    <snapshotRepository>
-        <id>git-hub-actions</id>
-        <name>git-hub-actions-libs-release-local</name>
-        <url>http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local</url>
-    </snapshotRepository>
+    <repository>
+        <id>my-github-actions</id>
+        <name>my-github-actions-libs-release</name>
+        <url>http://35.154.195.76:8082/artifactory/my-github-actions-libs-release</url>
+    </repository>
 </distributionManagement>
     <dependencies>
         <!-- Servlet API Dependency -->

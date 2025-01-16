@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>my-helloworld</artifactId>
-    <version>1.0.0-snapshot</version>
+    <version>1.0-snapshot</version>
     <packaging>war</packaging>
 <distributionManagement>
     <snapshotRepository>

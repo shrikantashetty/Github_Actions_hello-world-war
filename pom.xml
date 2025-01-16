@@ -6,13 +6,13 @@
 
     <groupId>com.example</groupId>
     <artifactId>my-helloworld</artifactId>
-    <version>1.0.0.${env.GITHUB_RUN_NUMBER}-SNAPSHOT</version>
+    <version>1.0.0-snapshot</version>
     <packaging>war</packaging>
 <distributionManagement>
     <snapshotRepository>
-          <id>snapshots</id>
-          <name>ip-172-31-44-2-snapshots</name>
-          <url>http://35.154.195.76:8081/artifactory/git-hub-actions-libs-snapshot-local</url>
+        <id>snapshots</id>
+        <name>ip-172-31-44-2-snapshots</name>
+        <url>http://35.154.195.76:8081/artifactory/git-hub-actions-libs-snapshot</url>
     </snapshotRepository>
 </distributionManagement>
     <dependencies>

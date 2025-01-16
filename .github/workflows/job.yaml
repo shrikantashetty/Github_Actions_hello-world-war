@@ -124,25 +124,17 @@ jobs:
           # Deploy artifact to the appropriate Tomcat server based on the environment
           if [ "${{ matrix.environment }}" == "staging" ]; then
             # Deployment to the staging environment          
-            cd /home/ubuntu/apache-tomcat-10.1.34/webapps/
-            ls -l
+            cd /opt/apache-tomcat-10.1.34/webapps/
+
             curl -L -u "admin:cmVmdGtuOjAxOjE3Njg1NDI0MDc6SjAwRVYyVzZ2d0F3Y3YzUjJFSm5kNGpRTVd1" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.52/my-helloworld-1.0.0.52.war"
-            ls -l
-            chmod 777 -R /home/ubuntu/apache-tomcat-10.1.34/
-            # mv my-helloworld-1.0.0.51.war my-helloworld-1.0.1.51.war
-            # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
-            # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"
+            
+            
           elif [ "${{ matrix.environment }}" == "production" ]; then
             # Deployment to the production environment (only triggered on master branch)
             if [[ $GITHUB_REF == "refs/heads/master" ]]; then
-            cd /home/ubuntu/apache-tomcat-10.1.34/webapps/
-            ls -l
+            cd /opt/apache-tomcat-10.1.34/webapps/
+
             curl -L -u "admin:cmVmdGtuOjAxOjE3Njg1NDI0MDc6SjAwRVYyVzZ2d0F3Y3YzUjJFSm5kNGpRTVd1" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.52/my-helloworld-1.0.0.52.war"
-            ls -l
-            chmod 777 -R /home/ubuntu/apache-tomcat-10.1.34/
-            # mv my-helloworld-1.0.0.51.war my-helloworld-1.0.1.51.war
-            # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
-            # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"
              
             else
               echo "Skipping production deployment: Only from master branch"

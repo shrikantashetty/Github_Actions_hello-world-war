@@ -10,9 +10,9 @@
     <packaging>war</packaging>
 <distributionManagement>
     <snapshotRepository>
-        <id>snapshots</id>
-        <name>ip-172-31-44-2-snapshots</name>
-        <url>http://35.154.195.76:8081/artifactory/git-hub-actions-libs-snapshot</url>
+        <id>git-hub-actions</id>
+        <name>git-hub-actions-libs-snapshot</name>
+        <url>http://35.154.195.76:8082/artifactory/git-hub-actions-libs-snapshot</url>
     </snapshotRepository>
 </distributionManagement>
     <dependencies>

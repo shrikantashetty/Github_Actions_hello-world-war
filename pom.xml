@@ -12,7 +12,7 @@
     <repository>
         <id>my-github-actions</id>
         <name>my-github-actions-libs-release</name>
-        <url>http://35.154.195.76:8082/artifactory/my-github-actions-libs-release</url>
+        <url>http://3.110.43.187:8081/artifactory/hello_world_war_git-libs-release</url>
     </repository>
 </distributionManagement>
     <dependencies>

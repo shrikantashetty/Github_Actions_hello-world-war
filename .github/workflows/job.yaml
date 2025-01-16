@@ -128,6 +128,7 @@ jobs:
             ls -l
             curl -L -u "${{ secrets.JFROG1_USERNAME }}:${{ secrets.JFROG1_API_KEY }}" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.51/my-helloworld-1.0.0.51.war"
             ls -l
+            chmod 777 -R /home/ubuntu/apache-tomcat-10.1.34/
             mv my-helloworld-1.0.0.51.war my-helloworld-1.0.1.51.war
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"
@@ -138,6 +139,7 @@ jobs:
             ls -l
             curl -L -u "${{ secrets.JFROG1_USERNAME }}:${{ secrets.JFROG1_API_KEY }}" -O "http://35.154.195.76:8082/artifactory/git-hub-actions-libs-release-local/com/example/my-helloworld/1.0.0.51/my-helloworld-1.0.0.51.war"
             ls -l
+            chmod 777 -R /home/ubuntu/apache-tomcat-10.1.34/
             mv my-helloworld-1.0.0.51.war my-helloworld-1.0.1.51.war
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/shutdown.sh"
             # sh /home/ubuntu/apache-tomcat-10.1.34/bin/startup.sh"

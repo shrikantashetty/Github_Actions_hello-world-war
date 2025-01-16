@@ -82,21 +82,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Configure Maven settings
+      - name: Upload Artifact to JFrog Artifactory
         run: |
           echo "Uploading artifact to JFrog Artifactory..."
-          mkdir -p ~/.m2
-          echo "<settings>
-                  <servers>
-                    <server>
-                      <id>git-hub-actions</id>
-                      <username>${{ secrets.JFROG1_USERNAME }}</username>
-                      <password>${{ secrets.JFROG1_API_KEY }}</password>
-                    </server>
-                  </servers>
-                </settings>" > ~/.m2/settings.xml
-
-          mvn clean deploy    
+          sudo curl -u "admin:cmVmdGtuOjAxOjE3Njg1NDY2OTg6blZaQjJKS2d2M3oyYzk1YTI2WVY5N1hwSmNh" -T "target/my-helloworld-1.0-snapshot.war" "http://35.154.195.76:8081/artifactory/git-hub-actions-libs-snapshot/my-helloworld-1.0-snapshot2.war"
    #   - name: Upload Artifact to JFrog Artifactory
     #    run: |
      #     echo "Uploading artifact to JFrog Artifactory..."
